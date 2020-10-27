@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding:0;
+    font-family: 'Roboto';
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+/*======================================
+                HEADER
+========================================*/
+
+.site-header {
+    background-color: rgba(0, 0, 0, .85);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+}
