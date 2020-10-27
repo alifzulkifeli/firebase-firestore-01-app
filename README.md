@@ -33,3 +33,4 @@ export default firebase;
 3. create connection to the collection `export const db = firebase.firestore()`
 4. to use the db object, import in the component
 5.
+6.
