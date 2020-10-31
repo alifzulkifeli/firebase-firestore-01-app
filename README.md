@@ -34,3 +34,4 @@ export default firebase;
 4. to use the db object, import in the component
 5.
 6.
+7.
