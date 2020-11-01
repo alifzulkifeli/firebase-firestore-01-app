@@ -1,5 +1,6 @@
 import React from 'react'
-import 
+import { db } from '../utils/firebase';
+
 export default function laptop() {
   return (
     <div>
