@@ -13,7 +13,14 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-export const db = firebase.firestore()
+const db = firebase.firestore()
+
+//get gollection
+export const laptopCollection = db.collection("laptop")
+export const subCollection = db.collection("site").doc('employee').collection('admin')
+
+// get documents
+// export const ssdCollection = db.doc('site/ssd')
 
 
 export default firebase;

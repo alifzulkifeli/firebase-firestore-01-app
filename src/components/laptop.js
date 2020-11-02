@@ -1,29 +1,41 @@
+
 import React, {useEffect, useState} from 'react'
-import { db } from '../utils/firebase';
 import { loopdata } from '../utils/tools';
+import { laptopCollection, subCollection } from '../utils/firebase';
 
 export default function Laptop() {
 
   const [laptop, setLaptop] = useState(null)
 
   useEffect(() => {
-    db.collection('laptop').get().then(
+     laptopCollection.get().then(
       snapshot => {
        const laptopdata = loopdata(snapshot)
-       setLaptop(laptopdata)
-       console.log(laptop, laptopdata);
+        setLaptop(laptopdata)
+        console.log(laptop);
       }
-    ).catch(e => {
-      console.log(e);
-    })
+    )
+     
+    // ssdCollection.get().then(
+    //   snapshot => {
+    //     console.log(snapshot.data());
+    //   }
+    // )
+
+    subCollection.get().then(
+      snapshot => {
+        const admin = loopdata(snapshot)
+        console.log(admin);
+      }
+    )
    
   }, [])
 
   return (
     <div>
-      {laptop && laptop.forEach(element => {
-        <h1>{element.id}</h1>
-      })}
+      {laptop && laptop[0].id}
+      hello
+    
     </div>
   )
 }
