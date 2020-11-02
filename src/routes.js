@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/index';
 import Header from './components/header';
 import Footer from './components/footer';
-import laptop from './components/laptop';
+import Laptop from './components/Laptop';
 
 
 const Routes = () => (
@@ -14,7 +14,7 @@ const Routes = () => (
         <main role="main" className="container">
             <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route exact path="/laptop" component={laptop}/>
+                <Route exact path="/laptop" component={Laptop}/>
             </Switch>
         </main>
     </BrowserRouter>
