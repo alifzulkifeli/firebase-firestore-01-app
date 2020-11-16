@@ -19,6 +19,7 @@ export default function Laptop() {
   useEffect(() => {
      getAllLaptop()
 
+     //GET doc by id
      laptopCollection.doc('OgTvvOf77y7FSzk2j5k0').get().then(snapshot => {
        console.table(snapshot.data());
      })
