@@ -7,35 +7,45 @@ export default function Laptop() {
 
   const [laptop, setLaptop] = useState(null)
 
-  useEffect(() => {
-     laptopCollection.get().then(
+  const getAllLaptop = () => {
+    laptopCollection.get().then(
       snapshot => {
        const laptopdata = loopdata(snapshot)
         setLaptop(laptopdata)
         console.log(laptop);
       }
     )
+  }
+  useEffect(() => {
+     getAllLaptop()
+
+     laptopCollection.doc('OgTvvOf77y7FSzk2j5k0').get().then(snapshot => {
+       console.table(snapshot.data());
+     })
      
-    // ssdCollection.get().then(
-    //   snapshot => {
-    //     console.log(snapshot.data());
-    //   }
-    // )
-
-    subCollection.get().then(
-      snapshot => {
-        const admin = loopdata(snapshot)
-        console.log(admin);
-      }
-    )
-   
-  }, [])
-
-  return (
-    <div>
+    }, [])
+    
+    return (
+      <div>
       {laptop && laptop[0].id}
-      hello
+      {laptop && JSON.stringify(laptop[0])}
+     
+      
     
     </div>
   )
 }
+
+
+// ssdCollection.get().then(
+//   snapshot => {
+//     console.log(snapshot.data());
+//   }
+// )
+
+// subCollection.get().then(
+//   snapshot => {
+//     const admin = loopdata(snapshot)
+//     console.log(admin);
+//   }
+// )
