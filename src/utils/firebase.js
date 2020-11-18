@@ -19,6 +19,9 @@ const db = firebase.firestore()
 export const laptopCollection = db.collection("laptop")
 export const subCollection = db.collection("site").doc('employee').collection('admin')
 
+//use firebase timestamp
+export const firebaseTimestamp = firebase.firestore.FieldValue.serverTimestamp;
+
 // get documents
 // export const ssdCollection = db.doc('site/ssd')
 

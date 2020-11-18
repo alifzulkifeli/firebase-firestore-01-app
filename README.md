@@ -30,6 +30,20 @@ export default firebase;
 
 1. create a databse in firestore at firebase website
 2. in `firebase.js` import firestore `import 'firebase/firestore'`
-3. create connection to the collection `export const db = firebase.firestore()`
-4. to use the db object, import in the component `import { db } from '../utils/firebase';`
-5. trace the bug
+3. create connection to the collection `const db = firebase.firestore()`
+4. tap to the collection, put it in variable, and export it to use in other component
+
+```js
+//get gollection
+export const laptopCollection = db.collection("collection name");
+export const subCollection = db
+	.collection("collection name")
+	.doc("employee")
+	.collection("collection name");
+
+// get documents if the data type is object
+export const ssdCollection = db.doc("site/ssd");
+
+//use firebase timestamp
+export const firebaseTimestamp = firebase.firestore.FieldValue.serverTimestamp;
+```
