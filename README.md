@@ -32,4 +32,4 @@ export default firebase;
 2. in `firebase.js` import firestore `import 'firebase/firestore'`
 3. create connection to the collection `export const db = firebase.firestore()`
 4. to use the db object, import in the component `import { db } from '../utils/firebase';`
-   5
+5. trace the bug
