@@ -74,3 +74,20 @@ laptopCollection.doc("name of id you wanna set").set({
 	createdAt: firebaseTimestamp(),
 });
 ```
+
+## Read
+
+- first create a function to help us loop the data
+
+```js
+export const loopdata = (snapshot) => {
+	let data = [];
+	snapshot.forEach((doc) => {
+		data.push({
+			...doc.data(),
+			id: doc.id,
+		});
+	});
+	return data;
+};
+```
