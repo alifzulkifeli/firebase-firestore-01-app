@@ -47,3 +47,30 @@ export const ssdCollection = db.doc("site/ssd");
 //use firebase timestamp
 export const firebaseTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 ```
+
+## Create
+
+- to create document,
+
+```js
+//ADD to db using default id
+laptopCollection
+	.add({
+		...data,
+		storage: parseInt(data.storage),
+		createdAt: firebaseTimestamp(),
+	})
+	.then((data) => {
+		console.log(data);
+	})
+	.catch((e) => {
+		console.log(e);
+	});
+
+//ADD to db and set the id
+laptopCollection.doc("name of id you wanna set").set({
+	...data,
+	storage: parseInt(data.storage),
+	createdAt: firebaseTimestamp(),
+});
+```
