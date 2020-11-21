@@ -91,3 +91,24 @@ export const loopdata = (snapshot) => {
 	return data;
 };
 ```
+
+- read data using helper function
+
+```js
+laptopCollection
+	.where("storage", ">", 128)
+	.where("storage", "<", 2048)
+	.orderBy("storage")
+	.limit(10)
+	.startAt()
+	.endAt()
+	.get()
+
+	.then((snapshot) => {
+		if (snapshot.exist) {
+			const laptopdata = loopdata(snapshot);
+			setLaptop(laptopdata);
+			console.log(laptopdata);
+		}
+	});
+```
