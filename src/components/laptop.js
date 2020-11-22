@@ -24,6 +24,7 @@ export default function Laptop() {
 				}
 			});
 	};
+
 	useEffect(() => {
 		getAllLaptop();
 

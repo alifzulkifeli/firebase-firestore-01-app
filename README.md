@@ -112,3 +112,11 @@ laptopCollection
 		}
 	});
 ```
+
+## Update
+
+```js
+laptopCollection.doc("7wLBXKbrlRCBB8rUQ2gA").update({
+	key: "value",
+});
+```
