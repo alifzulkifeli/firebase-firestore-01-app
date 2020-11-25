@@ -4,16 +4,16 @@ export default function Form() {
 	const [register, setRegister] = useState(true);
 	const [user, setUser] = useState({ email: "", password: "" });
 
-	handleForm = (e) => {
+	const handleForm = (e) => {
 		e.preventDefault();
 		if (register) {
-			console.log(register);
+			console.table(register, user);
 		} else {
 			console.log(register);
 		}
 	};
 
-	changeHandler = (e) => {
+	const changeHandler = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
 		setUser({ ...user, [name]: value });
@@ -43,7 +43,7 @@ export default function Form() {
 				</div>
 
 				<button type="submit" className="btn btn-primary">
-					{this.state.register ? "Register" : "Sign in"}
+					{register ? "Register" : "Sign in"}
 				</button>
 			</form>
 		</>
