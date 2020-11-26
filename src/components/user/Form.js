@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import firebase from "../../utils/firebase";
 
 export default function Form() {
 	const [register, setRegister] = useState(true);
@@ -6,8 +7,14 @@ export default function Form() {
 
 	const handleForm = (e) => {
 		e.preventDefault();
+
+		const { email, password } = user;
 		if (register) {
-			console.table(register, user);
+			firebase
+				.auth()
+				.createUserWithEmailAndPassword(email, password)
+				.then((res) => console.log(res))
+				.catch((err) => console.log(err));
 		} else {
 			console.log(register);
 		}
