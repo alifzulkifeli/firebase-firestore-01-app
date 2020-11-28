@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import firebase from "../../utils/firebase";
 
 export default function Form() {
-	const [register, setRegister] = useState(true);
+	const [register, setRegister] = useState(false);
 	const [user, setUser] = useState({ email: "", password: "" });
 
 	const handleForm = (e) => {
@@ -16,8 +16,26 @@ export default function Form() {
 				.then((res) => console.log(res))
 				.catch((err) => console.log(err));
 		} else {
-			console.log(register);
+			firebase
+				.auth()
+				.signInWithEmailAndPassword(email, password)
+				.then((res) => console.log(res))
+				.catch((err) => console.log(err));
 		}
+	};
+
+	const handleLogout = () => {
+		firebase
+			.auth()
+			.signOut()
+			.then(() => {
+				console.log("user log out");
+			});
+	};
+
+	const handleAsk = () => {
+		let getUser = firebase.auth().currentUser;
+		console.log(getUser);
 	};
 
 	const changeHandler = (e) => {
@@ -53,6 +71,9 @@ export default function Form() {
 					{register ? "Register" : "Sign in"}
 				</button>
 			</form>
+			<hr />
+			<button onClick={handleLogout}>Logout</button>
+			<button onClick={handleAsk}>Ask user</button>
 		</>
 	);
 }
