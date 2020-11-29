@@ -125,3 +125,4 @@ laptopCollection.doc("7wLBXKbrlRCBB8rUQ2gA").update({
 
 - enable in firebase console
 - add `import "firebase/auth";` and `firebase.auth();` in the `firebase.js` file
+  0
