@@ -35,7 +35,11 @@ export default function Form() {
 
 	const handleAsk = () => {
 		let getUser = firebase.auth().currentUser;
-		console.log(getUser);
+		if (getUser) {
+			getUser.getIdToken().then((res) => {
+				console.log(res);
+			});
+		}
 	};
 
 	const changeHandler = (e) => {
