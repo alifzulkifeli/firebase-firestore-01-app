@@ -77,6 +77,7 @@ export default function Form() {
 			</form>
 			<hr />
 			<button onClick={handleLogout}>Logout</button>
+			<hr />
 			<button onClick={handleAsk}>Ask user</button>
 		</>
 	);
