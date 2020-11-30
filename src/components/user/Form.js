@@ -42,6 +42,31 @@ export default function Form() {
 		}
 	};
 
+	const UpdateProfile = () => {
+		let getUser = firebase.auth().currentUser;
+		getUser
+			.updateProfile({
+				displayName: "steve",
+				photoURL: "https://image.jpg",
+			})
+			.then(() => {
+				console.log(getUser);
+			});
+	};
+
+	const UpdateEmail = () => {
+		let getUser = firebase.auth().currentUser;
+		let credential = firebase.auth.EmailAuthProvider.credential(
+			"new@gmail.com",
+			"test123"
+		);
+		if (getUser) {
+			getUser.reauthenticateWithCredential(credential).then((res) => {
+				getUser.updateEmail("aliff@gmail.com");
+			});
+		}
+	};
+
 	const changeHandler = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -79,6 +104,10 @@ export default function Form() {
 			<button onClick={handleLogout}>Logout</button>
 			<hr />
 			<button onClick={handleAsk}>Ask user</button>
+			<hr />
+			<button onClick={UpdateEmail}>Handle Update Email</button>
+			<hr />
+			<button onClick={UpdateProfile}>Handle Update Profile</button>
 		</>
 	);
 }
