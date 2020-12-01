@@ -110,6 +110,8 @@ export default function Form() {
 			<button onClick={UpdateEmail}>Handle Update Email</button>
 			<hr />
 			<button onClick={UpdateProfile}>Handle Update Profile</button>
+			<hr />
+			<button onClick={googleWithGoogle}>Sign In with google</button>
 		</>
 	);
 }
