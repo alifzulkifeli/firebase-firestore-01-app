@@ -13,7 +13,9 @@ export default function Form() {
 			firebase
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
-				.then((res) => console.log(res))
+				.then((res) =>
+					res.user.sendEmailVerification().then(console.log("mail sent"))
+				)
 				.catch((err) => console.log(err));
 		} else {
 			firebase
