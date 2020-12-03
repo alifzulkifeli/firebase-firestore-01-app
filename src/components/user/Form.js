@@ -44,6 +44,20 @@ export default function Form() {
 		}
 	};
 
+	const googleWithGoogle = () => {
+		const provider = new firebase.auth.GoogleAuthProvider();
+
+		firebase
+			.auth()
+			.signInWithPopup(provider)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	const UpdateProfile = () => {
 		let getUser = firebase.auth().currentUser;
 		getUser
