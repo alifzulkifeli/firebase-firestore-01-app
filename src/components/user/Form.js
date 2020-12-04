@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import firebase from "../../utils/firebase";
+import firebase, { usersCollection } from "../../utils/firebase";
 
 export default function Form() {
 	const [register, setRegister] = useState(false);
@@ -13,9 +13,10 @@ export default function Form() {
 			firebase
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
-				.then((res) =>
-					res.user.sendEmailVerification().then(console.log("mail sent"))
-				)
+				.then((res) => {
+					storeUserToDB(res);
+					res.user.sendEmailVerification().then(console.log("mail sent"));
+				})
 				.catch((err) => console.log(err));
 		} else {
 			firebase
@@ -51,6 +52,7 @@ export default function Form() {
 			.auth()
 			.signInWithPopup(provider)
 			.then((res) => {
+				storeUserToDB(res);
 				console.log(res);
 			})
 			.catch((err) => {
@@ -67,6 +69,20 @@ export default function Form() {
 			})
 			.then(() => {
 				console.log(getUser);
+			});
+	};
+
+	const storeUserToDB = (data) => {
+		usersCollection
+			.doc(data.user.uid)
+			.set({
+				email: data.user.email,
+			})
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	};
 

@@ -19,6 +19,9 @@ const db = firebase.firestore();
 
 //get gollection
 export const laptopCollection = db.collection("laptop");
+
+export const usersCollection = db.collection("users");
+
 export const subCollection = db
 	.collection("site")
 	.doc("employee")
