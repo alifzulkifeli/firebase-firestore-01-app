@@ -125,3 +125,32 @@ laptopCollection.doc("7wLBXKbrlRCBB8rUQ2gA").update({
 
 - enable in firebase console
 - add `import "firebase/auth";` and `firebase.auth();` in the `firebase.js` file
+
+## Sign in using email
+
+- create a form that can take input. like a login form
+
+```js
+const loginWithEmailAndPassword = (e) => {
+	e.preventDefault();
+
+	const { email, password } = user;
+	// if statement, if user not registered, register first, or not just login
+	if (register) {
+		firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then((res) => {
+				storeUserToDB(res);
+				res.user.sendEmailVerification().then(console.log("mail sent"));
+			})
+			.catch((err) => console.log(err));
+	} else {
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(email, password)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	}
+};
+```
