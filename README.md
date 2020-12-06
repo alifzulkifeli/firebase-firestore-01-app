@@ -154,3 +154,36 @@ const loginWithEmailAndPassword = (e) => {
 	}
 };
 ```
+
+## Update Email
+
+```js
+const UpdateEmail = () => {
+	let getUser = firebase.auth().currentUser;
+	let credential = firebase.auth.EmailAuthProvider.credential(
+		"new@gmail.com",
+		"test123"
+	);
+	if (getUser) {
+		getUser.reauthenticateWithCredential(credential).then((res) => {
+			getUser.updateEmail("aliff@gmail.com");
+		});
+	}
+};
+```
+
+## Update Profile
+
+```js
+const UpdateProfile = () => {
+	let getUser = firebase.auth().currentUser;
+	getUser
+		.updateProfile({
+			displayName: "steve",
+			photoURL: "https://image.jpg",
+		})
+		.then(() => {
+			console.log(getUser);
+		});
+};
+```
