@@ -188,3 +188,29 @@ const UpdateProfile = () => {
 		});
 };
 ```
+
+## Get Information About current User
+
+```js
+const askCurrentUser = () => {
+	let getUser = firebase.auth().currentUser;
+	if (getUser) {
+		getUser.getIdToken().then((res) => {
+			console.log(res);
+		});
+	}
+};
+```
+
+## Logout
+
+```js
+const handleLogout = () => {
+	firebase
+		.auth()
+		.signOut()
+		.then(() => {
+			console.log("user log out");
+		});
+};
+```

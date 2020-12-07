@@ -39,7 +39,7 @@ export default function Form() {
 	const handleAsk = () => {
 		let getUser = firebase.auth().currentUser;
 		if (getUser) {
-			getUser.getIdToken().then((res) => {
+			getUser.getIdTokenResult().then((res) => {
 				console.log(res);
 			});
 		}
