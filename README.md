@@ -160,6 +160,7 @@ const loginWithEmailAndPassword = (e) => {
 ```js
 const UpdateEmail = () => {
 	let getUser = firebase.auth().currentUser;
+	// kna bagi current email dengan password
 	let credential = firebase.auth.EmailAuthProvider.credential(
 		"new@gmail.com",
 		"test123"
