@@ -205,7 +205,7 @@ const askCurrentUser = () => {
 ## Logout
 
 ```js
-const handleLogout = () => {
+const logout = () => {
 	firebase
 		.auth()
 		.signOut()
