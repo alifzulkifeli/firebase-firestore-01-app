@@ -214,3 +214,22 @@ const logout = () => {
 		});
 };
 ```
+
+## Login with Google
+
+```js
+const googleWithGoogle = () => {
+	const provider = new firebase.auth.GoogleAuthProvider();
+
+	firebase
+		.auth()
+		.signInWithPopup(provider)
+		.then((res) => {
+			storeUserToDB(res);
+			console.log(res);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+```
