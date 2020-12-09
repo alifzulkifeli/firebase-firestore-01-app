@@ -218,7 +218,7 @@ const logout = () => {
 ## Login with Google
 
 ```js
-const googleWithGoogle = () => {
+const signinWithGoogle = () => {
 	const provider = new firebase.auth.GoogleAuthProvider();
 
 	firebase
