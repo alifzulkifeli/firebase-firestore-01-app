@@ -233,3 +233,21 @@ const signinWithGoogle = () => {
 		});
 };
 ```
+
+## Add register user to databse
+
+```js
+const storeUserToDB = (data) => {
+	usersCollection
+		.doc(data.user.uid)
+		.set({
+			email: data.user.email,
+		})
+		.then((res) => {
+			console.log(res);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+```
