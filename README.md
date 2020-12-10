@@ -236,6 +236,8 @@ const signinWithGoogle = () => {
 
 ## Add register user to databse
 
+- this action can be done in cloud function
+
 ```js
 const storeUserToDB = (data) => {
 	usersCollection
