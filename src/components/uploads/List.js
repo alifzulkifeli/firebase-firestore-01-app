@@ -25,7 +25,7 @@ export default function List() {
 			{image
 				? image.map((item) => (
 						<div>
-							{console.log(item)}
+							{console.log(item.name)}
 							{item.name}
 							{item.link}
 						</div>
