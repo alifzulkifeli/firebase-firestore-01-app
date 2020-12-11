@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyDYD_hyxdz-4yrZqtjDALCy40anplMDzGg",
@@ -15,6 +16,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth();
 
+//storage
+export const storage = firebase.storage();
+export const storageRef = storage.ref();
+export const userRef = storageRef.child(`images/user/`);
+
+//db
 const db = firebase.firestore();
 
 //get gollection

@@ -25,6 +25,11 @@ export default function Header() {
 								Login
 							</Link>
 						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/upload">
+								Upload
+							</Link>
+						</li>
 					</ul>
 				</div>
 			</nav>
