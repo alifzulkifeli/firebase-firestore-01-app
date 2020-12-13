@@ -4,7 +4,7 @@ import { userRef } from "../../utils/firebase";
 export default function List() {
 	const [image, setimage] = useState([]);
 
-	useEffect(() => {
+	const makeArr = () => {
 		userRef.listAll().then((data) => {
 			let imagesArray = [];
 			data.items.forEach((element) => {
@@ -13,21 +13,25 @@ export default function List() {
 						name: element.name,
 						link: url,
 					});
-					setimage(imagesArray);
 					console.log(imagesArray);
+					setimage(imagesArray);
 				});
 			});
 		});
+	};
+	useEffect(() => {
+		makeArr();
 	}, []);
 
 	return (
 		<>
 			{image
-				? image.map((item) => (
+				? image.map((item, index) => (
 						<div>
 							{console.log(item.name)}
 							{item.name}
 							{item.link}
+							{JSON.stringify(item)}
 						</div>
 				  ))
 				: null}
