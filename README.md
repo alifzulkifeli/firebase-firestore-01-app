@@ -254,4 +254,4 @@ const storeUserToDB = (data) => {
 };
 ```
 
-# Storagr
+# Storage
