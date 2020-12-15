@@ -3,6 +3,7 @@ import { userRef } from "../../utils/firebase";
 
 export default function List() {
 	const [image, setimage] = useState([]);
+	const [test, settest] = useState(false);
 
 	const makeArr = () => {
 		userRef.listAll().then((data) => {
@@ -25,7 +26,7 @@ export default function List() {
 
 	return (
 		<>
-			{image
+			{test
 				? image.map((item, index) => (
 						<div>
 							{console.log(item.name)}
@@ -35,6 +36,7 @@ export default function List() {
 						</div>
 				  ))
 				: null}
+			<button onClick={settest(!test)}>test</button>
 		</>
 	);
 }
