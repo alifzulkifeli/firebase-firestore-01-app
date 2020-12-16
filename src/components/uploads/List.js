@@ -5,7 +5,7 @@ export default function List() {
 	const [image, setimage] = useState([]);
 	const [test, settest] = useState(false);
 
-	const makeArr = () => {
+	const getAll = () => {
 		userRef.listAll().then((data) => {
 			let imagesArray = [];
 			data.items.forEach((element) => {
@@ -20,23 +20,33 @@ export default function List() {
 			});
 		});
 	};
+
+	const handleDelete = (name) =>
+		userRef.child(name).delete(() => {
+			console.log("deleted");
+			getAll();
+		});
+
 	useEffect(() => {
-		makeArr();
+		getAll();
 	}, []);
 
 	return (
 		<>
-			{test
+			<button onClick={() => settest(!test)}>test</button>
+			{image
 				? image.map((item, index) => (
 						<div>
-							{console.log(item.name)}
-							{item.name}
-							{item.link}
-							{JSON.stringify(item)}
+							<div key={index}>
+								{console.log(item.name)}
+								{item.name}
+								{item.link}
+								{JSON.stringify(item)}
+							</div>
+							<div onClick={() => handleDelete(item.name)}>Delete</div>
 						</div>
 				  ))
 				: null}
-			<button onClick={settest(!test)}>test</button>
 		</>
 	);
 }
