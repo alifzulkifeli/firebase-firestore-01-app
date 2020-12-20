@@ -255,3 +255,5 @@ const storeUserToDB = (data) => {
 ```
 
 # Storage
+
+- in `firebase.js` connect the app with firebase storage by import `import "firebase/storage";`
