@@ -257,3 +257,4 @@ const storeUserToDB = (data) => {
 # Storage
 
 - in `firebase.js` connect the app with firebase storage by import `import "firebase/storage";`
+- after that make sure there is bucket in the firebase config
