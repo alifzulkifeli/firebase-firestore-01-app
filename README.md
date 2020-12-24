@@ -265,4 +265,5 @@ const storeUserToDB = (data) => {
 export const storage = firebase.storage();
 export const storageRef = storage.ref();
 export const userRef = storageRef.child(`images/user/`);
+// this will create a new folder name /images/user and when iot get referenced it will save the file in this folder
 ```
