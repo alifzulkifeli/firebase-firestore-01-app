@@ -267,3 +267,18 @@ export const storageRef = storage.ref();
 export const userRef = storageRef.child(`images/user/`);
 // this will create a new folder name /images/user and when iot get referenced it will save the file in this folder
 ```
+
+## Upload
+
+- the html file when upload file
+
+```html
+<form onSubmit="{handleUpload}">
+	<div className="form-group">
+		<progress value="{progress}" max="100" />
+		<label>File</label>
+		<input className="form-control" type="file" onChange="{handleChange}" />
+	</div>
+	<button type="submit" className="btn btn-primary">Upload file</button>
+</form>
+```
