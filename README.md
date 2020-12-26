@@ -282,3 +282,14 @@ export const userRef = storageRef.child(`images/user/`);
 	<button type="submit" className="btn btn-primary">Upload file</button>
 </form>
 ```
+
+- the function to store file in state
+
+```jsx
+const handleChange = (event) => {
+	if (event.target.files[0]) {
+		const images = event.target.files[0];
+		setImage(images);
+	}
+};
+```
