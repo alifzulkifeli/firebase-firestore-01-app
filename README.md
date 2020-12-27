@@ -300,6 +300,7 @@ const handleChange = (event) => {
 const handleUpload = (e) => {
 	e.preventDefault();
 
+	// reference the location of folder in storage
 	const uploadTask = userRef.child(`${image.name}`).put(image);
 
 	uploadTask.on(
