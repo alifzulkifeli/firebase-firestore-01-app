@@ -295,6 +295,7 @@ const handleChange = (event) => {
 ```
 
 - function to upload image to bucket
+- there will be 3 callbacks
 
 ```jsx
 const handleUpload = (e) => {
