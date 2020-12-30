@@ -297,6 +297,8 @@ const handleChange = (event) => {
 - function to upload image to bucket
 - there will be 3 callbacks
 
+1. the state of upload. can be use to make progress bar
+
 ```jsx
 const handleUpload = (e) => {
 	e.preventDefault();
