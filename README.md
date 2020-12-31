@@ -298,6 +298,7 @@ const handleChange = (event) => {
 - there will be 3 callbacks
 
 1. the state of upload. can be use to make progress bar
+2. the handling error
 
 ```jsx
 const handleUpload = (e) => {
