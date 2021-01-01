@@ -299,6 +299,7 @@ const handleChange = (event) => {
 
 1. the state of upload. can be use to make progress bar
 2. the handling error
+3. handle what to do after uploaded. can be use to get the file url
 
 ```jsx
 const handleUpload = (e) => {
