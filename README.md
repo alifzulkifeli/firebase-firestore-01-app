@@ -342,3 +342,21 @@ const handleUpload = (e) => {
 ```
 
 ## Download Image
+
+```jsx
+const getAll = () => {
+	userRef.listAll().then((data) => {
+		let imagesArray = [];
+		data.items.forEach((element) => {
+			element.getDownloadURL().then((url) => {
+				imagesArray.push({
+					name: element.name,
+					link: url,
+				});
+				console.log(imagesArray);
+				setimage(imagesArray);
+			});
+		});
+	});
+};
+```
