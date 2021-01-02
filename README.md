@@ -340,3 +340,5 @@ const handleUpload = (e) => {
 	);
 };
 ```
+
+## Download Image
