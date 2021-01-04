@@ -343,6 +343,8 @@ const handleUpload = (e) => {
 
 ## Download Image
 
+- function can be use to read all the image in list
+
 ```jsx
 const getAll = () => {
 	userRef.listAll().then((data) => {
