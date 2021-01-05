@@ -362,3 +362,13 @@ const getAll = () => {
 	});
 };
 ```
+
+## Delete
+
+```jsx
+const handleDelete = (name) =>
+	userRef.child(name).delete(() => {
+		console.log("deleted");
+		getAll();
+	});
+```
