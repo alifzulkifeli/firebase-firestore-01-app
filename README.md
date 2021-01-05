@@ -365,6 +365,8 @@ const getAll = () => {
 
 ## Delete
 
+- this function can be used to delete file from storage
+
 ```jsx
 const handleDelete = (name) =>
 	userRef.child(name).delete(() => {
