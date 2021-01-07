@@ -379,3 +379,5 @@ const handleDelete = (name) =>
 
 1. install firebase in terminal `npm install -g firebase-tools`
 2. run `firebase login`
+3. run `firebase init`
+4. run `firebase deploy`
