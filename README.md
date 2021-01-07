@@ -376,3 +376,5 @@ const handleDelete = (name) =>
 ```
 
 ## Hosting
+
+1. install firebase in terminal `npm install -g firebase-tools`
