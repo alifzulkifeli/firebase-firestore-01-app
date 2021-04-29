@@ -423,5 +423,6 @@ service firebase.storage {
     }
   }
 }
-
 ```
+
+# Cloud Function
