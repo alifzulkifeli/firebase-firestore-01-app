@@ -374,3 +374,54 @@ const handleDelete = (name) =>
 		getAll();
 	});
 ```
+
+# Rules
+
+## rules for firestore
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+  	//function
+  	function signedIn(){
+    	return request.auth.uid != null
+    }
+
+  	//rules
+    match /laptop/{document=**} {
+    	allow read: if signedIn() || resource.data.available == true
+      allow create, write, update, delete: if signedIn()
+    }
+    match /users/{userId} {
+    	allow read,update,delete: if request.auth.uid == userId
+      allow create: if signedIn()
+    }
+
+  }
+}
+```
+
+## rules for storage
+
+```js
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /images/users/{imageId}{
+   		allow read: if true
+      allow write: if request.auth != null
+    }
+
+    match /users/{userId}/{filename}{
+    	allow read: if true
+      allow write:
+      	if request.auth.uid == userId &&
+        request.resource.size < 1 * 1024 * 1024 &&
+        request.resource.contentType == 'image/png'
+    }
+  }
+}
+
+```
