@@ -426,3 +426,19 @@ service firebase.storage {
 ```
 
 # Cloud Function
+
+- initiate it in the firebase console
+- run `npm install -g firebase-tools`
+- run `firebase init` and `firebase deploy` and choose the function option
+- this will create a firebase new folder name functtion in the project
+- in the function folder there will be index.js file where the code for function is written
+
+## Initiate function
+
+- to initiate function first we need to import the function library
+- the firebase admin library is used to connect firebase function with the firebase storage
+
+```js
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+```
