@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const admin = require('firebase-admin')
 
 
-admin.initializeApp(functions.config().firebase)
+admin.initializeApp()
 
 //http functions  
 exports.conatacts =  functions.https.onRequest(async(req, res) => {
