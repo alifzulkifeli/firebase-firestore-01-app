@@ -442,3 +442,72 @@ service firebase.storage {
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 ```
+
+## http function
+
+```js
+exports.conatacts = functions.https.onRequest(async (req, res) => {
+	const { name, phone } = req.query;
+
+	const addContact = await admin.firestore().collection("contacts").add({
+		name,
+		phone,
+	});
+
+	res.json({ result: `${addContact.id}` });
+});
+```
+
+## trigger function
+
+```js
+exports.addDate = functions.firestore
+	.document("contacts/{contactId}")
+	.onCreate((snapshot, context) => {
+		const timestamp = admin.firestore.FieldValue.serverTimestamp();
+		return admin
+			.firestore()
+			.doc(`contacts/${context.params.contactId}`)
+			.update({
+				dataAdded: timestamp,
+			});
+	});
+```
+
+## callable function
+
+-to use the function, firrt need to create an instance from the function in the `firebase.js` file
+
+```js firebase
+import "firebase/firebase-functions";
+export const functions = firebase.functions();
+```
+
+- the next step is to create the function.
+
+```js index.js
+exports.addLog = functions.https.onCall(async (data, context) => {
+	const log = {
+		message: data.message,
+		time: admin.firestore.FieldValue.serverTimestamp(),
+	};
+
+	const addLog = await admin.firestore().collection("logs").add(log);
+	return `result ${addLog.id}`;
+});
+```
+
+- and to use the function is create an trigger or by calling the function
+
+```js
+const handleClickFunction = () => {
+	console.log("trigger");
+	const addLog = functions.httpsCallable("addLog");
+
+	addLog({
+		message: "this is new log message",
+	}).then((res) => {
+		console.log(res);
+	});
+};
+```

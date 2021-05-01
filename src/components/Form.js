@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { laptopCollection, firebaseTimestamp } from "../utils/firebase";
+import { laptopCollection, firebaseTimestamp, functions } from "../utils/firebase";
 
 export default function Form() {
 	const [data, setData] = useState({});
@@ -47,6 +47,17 @@ export default function Form() {
 		// console.log(data);
 	};
 
+	const handleClickFunction = () => {
+		console.log('trigger');
+		const addLog = functions.httpsCallable('addLog')
+
+		addLog({
+			message:"this is new log message"
+		}).then((res) => {
+			console.log(res)
+		})
+	}
+
 	return (
 		<>
 			<form onSubmit={handleForm}>
@@ -89,6 +100,11 @@ export default function Form() {
 				
 			</form>
 			<hr />
+			<button onClick={handleClickFunction}>
+				test function
+			</button>
+			<hr/>
+			
 		</>
 	);
 }

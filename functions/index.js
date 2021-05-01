@@ -27,6 +27,15 @@ exports.addDate = functions.firestore
 
 
 //calables
-exports.addLog = functions.https.onCall((data,context) => {
-  return 'log added'
+exports.addLog = functions.https.onCall(async(data,context) => {
+  const log = {
+    message: data.message,
+    time: admin.firestore.FieldValue.serverTimestamp()
+  }
+
+  const addLog = await admin.firestore().collection('logs').add(log)
+  return `result ${addLog.id}`
 })
+
+
+
