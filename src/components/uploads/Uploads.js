@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { storageRef, userRef } from "../../utils/firebase";
+import { storageRef, userRef,storage } from "../../utils/firebase";
 import List from './List';
+import  firebase  from 'firebase/app';
+
 
 export default function Upload() {
 	const [image, setImage] = useState(null);
@@ -10,8 +12,8 @@ export default function Upload() {
 	const handleUpload = (e) => {
 		e.preventDefault();
 
-		
-		const uploadTask = userRef.child(`${image.name}`).put(image);
+		const user = firebase.auth().currentUser
+		const uploadTask = storage.ref(`users/${user.uid}/${image.name}`).put(image);
 
 		uploadTask.on(
 			"state_changes",
@@ -20,6 +22,7 @@ export default function Upload() {
 					(snapshot.bytesTransferred / snapshot.totalBytes) * 100
 				);
 				setProgress(inprogress);
+				
 
 				switch (snapshot.state) {
 					case snapshot.state:

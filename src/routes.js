@@ -5,9 +5,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./components/index";
 import Header from "./components/header";
 // import Footer from "./components/footer";
-import Laptop from "./components/Laptop";
 import Login from "./components/user/Login";
 import Upload from "./components/uploads/Uploads";
+import Laptop from './components/laptop';
 
 const Routes = () => (
 	<BrowserRouter>
